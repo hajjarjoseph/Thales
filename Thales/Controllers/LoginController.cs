@@ -4,6 +4,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Thales.Models;
 
 namespace Thales.Controllers
 {
@@ -14,6 +15,14 @@ namespace Thales.Controllers
         {
             return View();
         }
+
+        [HttpPost]
+        public ActionResult SignIn(User pUser)
+        {
+            System.Diagnostics.Debug.WriteLine(pUser.Password);
+            return RedirectToAction("Index", "Login");
+        }
+
 
     }
 }
