@@ -2,8 +2,10 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
+using Parse;
 using Thales.Models;
 
 namespace Thales.Controllers
@@ -17,10 +19,24 @@ namespace Thales.Controllers
         }
 
         [HttpPost]
-        public ActionResult SignIn(User pUser)
+        public async Task<ActionResult> SignIn(User pUser)
         {
-            System.Diagnostics.Debug.WriteLine(pUser.Password);
-            return RedirectToAction("Index", "Login");
+
+            try
+            {
+                await ParseUser.LogInAsync(pUser.Email, pUser.Password);
+                // Login was successful.
+                Debug.WriteLine("************ login succesfull *********");
+            }
+            catch (Exception e)
+            {
+                // The login failed. Check the error to see why.
+                Debug.WriteLine("************ error login *********" + e);
+
+
+            }
+            return RedirectToAction("Index", "login");
+
         }
 
 
