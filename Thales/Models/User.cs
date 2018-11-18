@@ -7,10 +7,15 @@ namespace Thales.Models
 {
     public class User
     {
-        public int Id { get; set; }
-        public string Email { get; set; }
-        public string Password { get; set; }
-        public string phoneNumber { get; set; }
+        public int id { get; set; }
+        public string email { get; set; }
+        public string password { get; set; }
+		public string confirmPassword { get; set; }
+		public string phoneNumber { get; set; }
+		public string firstName { get; set; }
+		public string lastName { get; set; }
 
-    }
+
+
+	}
 }

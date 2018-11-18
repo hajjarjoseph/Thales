@@ -1,0 +1,57 @@
+﻿@model Thales.Models.User
+@{
+    Layout = null;
+}
+
+<!-- Project -->
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>Thales Sign Up</title>
+    <link rel="stylesheet" type="text/css" href="../Ress/SignUp_Ress/css/SignUp.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet">
+</head>
+<body>
+    <h1 class="headernav"><a href="" class="h1a">Thales</a></h1>
+    <nav>
+
+        <div>
+            <a class="notclicked">Log In</a>
+            <a href="" class="notclicked">Product</a>
+            <a href="" class="notclicked">About Us</a>
+            <a href="" class="notclicked">Contact Us </a>
+        </div>
+    </nav>
+    <div class="signUpbox">
+        <div class="leftSign">
+
+            <h2><i class="fas fa-project-diagram"></i> Free Three Months Plan</h2>
+            <p>Create, Connect, Manage Building for Free</p><hr>
+            <h2><i class="far fa-building"></i> Your Building Platform</h2>
+            <p>A Platform for Buildings with Asset Management and smthn Scaling.</p><hr>
+            <h2><i class="fas fa-lock"></i> Secure Database</h2>
+            <p>All Data is Encrypted and Stored in a Secure Database</p>
+        </div>
+        <div class="rightSign">
+
+            @using (Html.BeginForm("Register", "SignUp", new { ReturnUrl = ViewBag.ReturnUrl },
+      FormMethod.Post))
+            {
+                @Html.TextBoxFor(m => m.firstName, new {placeholder="FirstName" })
+                @Html.TextBoxFor(m => m.lastName, new {placeholder = "LastName" })
+                @Html.TextBoxFor(m => m.email, new {placeholder = "Email" })
+                @Html.TextBoxFor(m => m.phoneNumber, new {placeholder = "Phone Number" })
+                @Html.TextBoxFor(m => m.password, new { placeholder = "Password",@type="password"})
+                @Html.TextBoxFor(m => m.confirmPassword, new { placeholder = "Confirm Password",@type="password" })
+
+                <button>Create Account</button>
+             }
+          
+          
+
+
+        </div>
+    </div>
+</body>
+</html>

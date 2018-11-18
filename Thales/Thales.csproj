@@ -400,6 +400,7 @@
     <Content Include="Ress\Login_Ress\vendor\select2\select2.js" />
     <Content Include="Ress\Login_Ress\vendor\select2\select2.min.css" />
     <Content Include="Ress\Login_Ress\vendor\select2\select2.min.js" />
+    <Content Include="Ress\SignUp_Ress\css\SignUp.css" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="ApplicationInsights.config">
@@ -519,10 +520,10 @@
     <Content Include="Scripts\paper-dashboard.js.map" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Login\Index.cshtml" />
+    <Content Include="Views\SignUp\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\SignUp\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

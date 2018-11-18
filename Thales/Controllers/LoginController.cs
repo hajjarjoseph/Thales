@@ -24,7 +24,7 @@ namespace Thales.Controllers
 
             try
             {
-                await ParseUser.LogInAsync(pUser.Email, pUser.Password);
+                await ParseUser.LogInAsync(pUser.email, pUser.password);
                 // Login was successful.
                 Debug.WriteLine("************ login succesfull *********");
             }
