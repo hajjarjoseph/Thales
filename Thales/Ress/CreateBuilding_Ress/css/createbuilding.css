@@ -1,0 +1,33 @@
+﻿.form-control {
+    width: 75px;
+    display: inline-block;
+}
+
+.bldg {
+    display: inline-block;
+    margin-right: 20px;
+    margin-left: 20px;
+    margin-top: 20px;
+    width: 300px;
+}
+
+.appInput {
+    width: 100px;
+    margin-top: 5px;
+}
+
+#appSelect {
+    display: inline-block;
+    margin-right: 20px;
+    margin-left: 20px;
+    margin-top: 20px;
+}
+
+.table {
+    max-width: 500px;
+}
+
+#shareInp {
+    margin-right: 20px;
+    margin-left: 20px;
+}

@@ -1,0 +1,109 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="utf-8" />
+    <link rel="apple-touch-icon" sizes="76x76" href="../Ress/assets/img/apple-icon.png">
+    <link rel="icon" type="image/png" href="../Ress/assets/img/favicon.png">
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <title>
+        Thales
+    </title>
+    <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
+    <!--     Fonts and icons     -->
+    <!--     Fonts and icons     -->
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,200" rel="stylesheet" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+    <!-- CSS Files -->
+    <link href="../Ress/assets/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="../Ress/assets/css/paper-dashboard.css?v=2.0.1" rel="stylesheet" />
+    <!--CSS for Page -->
+    <link href="../Ress/JoinOrCreate_Ress/join.css" rel="stylesheet" />
+    <!-- CSS and JS for Graphs -->
+    <link rel="stylesheet" href="../charts-components/dist/chartist.min.css">
+    <script src="../charts-components/dist/chartist.min.js"></script>
+</head>
+<body class=" ">
+    <div class="wrapper">
+
+        <div class="main-panel">
+            <!-- End of Sidebar -->
+
+            <div class="join" data-toggle="modal" href="#" data-target=".join-modal">
+                <h4>Join a Building</h4>
+                <h1><i class="fas fa-users"></i></h1>
+            </div>
+            <div class="create" id="createB" onclick="window.location.href='../createBuilding/Index'">
+                <h4>Create a Building</h4>
+                <h1><i class="far fa-building"></i></h1>
+            </div>
+            <!-- Join Modal -->
+            <div class="modal fade join-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                            <h5 class="modal-title" id="exampleModalLabel">Join Building</h5>
+                        </div>
+                       
+               @using (Html.BeginForm("JoinBuilding", "JoinOrCreate", new { ReturnUrl = ViewBag.ReturnUrl },
+         FormMethod.Post))
+               {
+                <div class="modal-body">
+                    <input type="text" name="pin" id="pin" placeholder="Enter Pin">
+
+                </div>
+
+
+                <div class="modal-footer">
+
+                    <button class="btn btn-danger" type="submit" id="joinButton">Join</button>
+
+                </div>
+
+               }
+                               
+                       
+                    </div>
+                </div>
+            </div>
+            <!-- Join Modal End -->
+            <!--   Core JS Files   -->
+            <script src="../Ress/assets/js/core/jquery.min.js"></script>
+            <script src="../Ress/assets/js/core/popper.min.js"></script>
+            <script src="../Ress/assets/js/core/bootstrap.min.js"></script>
+            <script src="../Ress/assets/js/plugins/perfect-scrollbar.jquery.min.js"></script>
+            <script src="../Ress/assets/js/plugins/moment.min.js"></script>
+            <!--  Plugin for Switches, full documentation here: http://www.jque.re/plugins/version3/bootstrap.switch/ -->
+            <script src="../Ress/assets/js/plugins/bootstrap-switch.js"></script>
+            <!--  Plugin for Sweet Alert -->
+            <script src="../Ress/assets/js/plugins/sweetalert2.min.js"></script>
+            <!-- Forms Validations Plugin -->
+            <script src="../Ress/assets/js/plugins/jquery.validate.min.js"></script>
+            <!--  Plugin for the Wizard, full documentation here: https://github.com/VinceG/twitter-bootstrap-wizard -->
+            <script src="../Ress/assets/js/plugins/jquery.bootstrap-wizard.js"></script>
+            <!--	Plugin for Select, full documentation here: http://silviomoreto.github.io/bootstrap-select -->
+            <script src="../Ress/assets/js/plugins/bootstrap-selectpicker.js"></script>
+            <!--  Plugin for the DateTimePicker, full documentation here: https://eonasdan.github.io/bootstrap-datetimepicker/ -->
+            <script src="../Ress/assets/js/plugins/bootstrap-datetimepicker.js"></script>
+            <!--  DataTables.net Plugin, full documentation here: https://datatables.net/    -->
+            <script src="../Ress/assets/js/plugins/jquery.dataTables.min.js"></script>
+            <!--	Plugin for Tags, full documentation here: https://github.com/bootstrap-tagsinput/bootstrap-tagsinputs  -->
+            <script src="../Ress/assets/js/plugins/bootstrap-tagsinput.js"></script>
+            <!-- Plugin for Fileupload, full documentation here: http://www.jasny.net/bootstrap/javascript/#fileinput -->
+            <script src="../Ress/assets/js/plugins/jasny-bootstrap.min.js"></script>
+            <!--  Full Calendar Plugin, full documentation here: https://github.com/fullcalendar/fullcalendar    -->
+            <script src="../Ress/assets/js/plugins/fullcalendar.min.js"></script>
+            <!-- Vector Map plugin, full documentation here: http://jvectormap.com/documentation/ -->
+            <script src="../Ress/assets/js/plugins/jquery-jvectormap.js"></script>
+          
+</body>
+</html>

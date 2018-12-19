@@ -19,7 +19,7 @@ namespace Thales.Controllers
         }
 
 		[HttpPost]
-		public async Task<ActionResult> Register(User pUser)
+		public async Task<ActionResult> Register( User pUser)
 		{
 
 

@@ -148,13 +148,21 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\CreateBuildingController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\JoinOrCreateController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\SignUpController.cs" />
+    <Compile Include="Controllers\UserBillsController.cs" />
+    <Compile Include="Controllers\UsersDashController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Bills.cs" />
+    <Compile Include="Models\BillsList.cs" />
+    <Compile Include="Models\Building.cs" />
     <Compile Include="Models\User.cs" />
+    <Compile Include="Models\UserDashboard.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -359,6 +367,7 @@
     <Content Include="img\RO.png" />
     <Content Include="img\stylus.jpg" />
     <Content Include="img\US.png" />
+    <Content Include="Ress\CreateBuilding_Ress\css\createbuilding.css" />
     <Content Include="Ress\Login_Ress\css\main-login.css" />
     <Content Include="Ress\Login_Ress\css\util-login.css" />
     <Content Include="Ress\Login_Ress\fonts\font-awesome-4.7.0\css\font-awesome.css" />
@@ -521,9 +530,19 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Login\Index.cshtml" />
     <Content Include="Views\SignUp\Index.cshtml" />
+    <Content Include="Views\JoinOrCreate\Index.cshtml" />
+    <Content Include="Views\CreateBuilding\Index.cshtml" />
+    <Content Include="Views\UsersDash\Index.cshtml" />
+    <Content Include="Views\UserBills\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Ress\CreateBuilding_Ress\NewFolder1\" />
+    <Folder Include="Ress\JoinOrCreate_Ress\" />
+    <Folder Include="Ress\NewFolder1\" />
+    <Folder Include="Ress\userBills_Ress\" />
+    <Folder Include="Ress\UserDash_Ress\" />
+    <Folder Include="Views\NewFolder1\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

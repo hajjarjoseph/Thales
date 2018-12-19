@@ -1,0 +1,73 @@
+/* Bill Table */
+.tableTitle{
+    margin-left:12px;
+}
+
+/* Bill Table End*/
+
+
+
+
+
+/* Announcement Css */
+.table-responsive{
+    overflow: hidden;   /*Remove Scroll Bars*/
+}
+/* Announcement Css End*/
+
+/*Modal Css  */
+#Complaints{
+    margin-top:150%;
+    border-top:1px solid white;
+}
+.complaintList li{
+    
+    list-style: none;
+}
+.complaintList li input{
+    margin-left:40px;
+    /* border:none;
+    border-bottom:1px solid black; */
+    border:1px solid;
+    border-radius:3px;
+    text-indent: 5px;
+    color: black;
+}
+#complaintName{
+    width:300px;
+    margin-top:40px;
+}
+#complaintAppartment{
+    width:50px;
+    margin-top:40px;
+    margin-bottom:40px;
+    
+}
+#complaintInput{
+    margin-top:10px;
+    height:200px;
+    width:400px;
+    margin-left:100px;
+    padding-top: 0;
+    padding-left: 0;
+    border-radius:3px;
+    border:1px solid;
+}
+#complaintButton{
+    margin-top:40px;
+    margin-left:36%;
+    
+}
+/* Graphs Start*/
+.chart2 .ct-series-a .ct-line {
+    /* Set the colour of this series line */
+    stroke:rgb(239, 129, 87);
+    /* Control the thikness of your lines */
+    stroke-width: 5px;
+    /* Create a dashed line with a pattern */
+   
+  }
+.chart2 .ct-point{
+    stroke-width: 0;
+}
+/* Graphs End */
