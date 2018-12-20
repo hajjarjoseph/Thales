@@ -1,11 +1,10 @@
-﻿
+﻿@model Thales.Models.AppartmentsList
 @{
     Layout = null;
 }
 
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta charset="utf-8" />
@@ -15,7 +14,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <title>
         Thales
-
     </title>
     <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
     <!--     Fonts and icons     -->
@@ -28,21 +26,20 @@
     <link href="../Ress/assets/css/bootstrap.min.css" rel="stylesheet" />
     <link href="../Ress/assets/css/paper-dashboard.css?v=2.0.1" rel="stylesheet" />
     <!--CSS and JS for Page -->
-    <link href="../Ress/AdminNav_Ress/navigation.css" rel="stylesheet" />
-
-
     <!-- CSS and JS for Graphs -->
-    <link rel="stylesheet" href="../Ress/charts-components/dist/chartist.min.css">
-    <script src="../Ress/charts-components/dist/chartist.min.js"></script>
-
+    <link rel="stylesheet" href="../charts-components/dist/chartist.min.css">
+    <script src="../charts-components/dist/chartist.min.js"></script>
 </head>
+<style>
+    .table-responsive {
+        overflow: auto;
+    }
+</style>
 <body class=" ">
     <div class="wrapper ">
         <div class="sidebar" data-color="brown" data-active-color="danger">
             <!--
-
                 Tip 1: You can change the color of the sidebar using: data-color="blue | green | orange | red | yellow"
-
             -->
             <div class="logo">
                 <a href="home.html" class="simple-text logo-mini">
@@ -52,11 +49,8 @@
                 </a>
                 <a href="home.html" class="simple-text logo-normal">
                     Thales
-
                     <!-- <div class="logo-image-big">
-
                       <img src="../Ress/assets/img/logo-big.png">
-
                     </div> -->
                 </a>
             </div>
@@ -69,7 +63,6 @@
                         <a data-toggle="collapse" href="#collapseExample" class="collapsed">
                             <span>
                                 Get User Name
-
                             </span>
                         </a>
                         <div class="clearfix"></div>
@@ -81,11 +74,10 @@
                             <p>Appartment <span id="appartNum"></span></p>
                         </a>
                     </li>
-                    <li>
-                        <a href="bills.html">
+                    <li href="bills.html">
+                        <a href="#">
                             <p>
                                 Bills
-
                             </p>
                         </a>
                     </li>
@@ -93,12 +85,16 @@
                         <a href="reports.html">
                             <p>
                                 Reports
-
                             </p>
                         </a>
                     </li>
+                    <li>
+                        <a data-toggle="modal" href="#" data-target=".complaint-modal">
 
-
+                            <p id="Complaints">
+                                Complaints
+                            </p>
+                        </a>
                 </ul>
             </div>
         </div>
@@ -174,143 +170,98 @@
                 </div>
             </nav>
             <!-- End Navbar -->
+
+
+
+
+
+
             <div class="content">
-                <h5>Navigation</h5>
-                <div class="places-sweet-alerts">
-                    <div class="row">
-                        <div class="col-md-2"></div>
+                <!-- Table -->
+                <div class="row">
+                    <div class="col-md-4"></div>
+                    <div class="col-md-4">
+                        <div class="card">
+                            <div class="card-header">
+                                <h4 class="card-title">Use These Codes To Invite People </h4>
+                            </div>
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <table class="table table-striped" id="billTableBody">
+                                        <thead class="text-primary">
 
-                        <div class="col-md-3">
-                            <a href="../AddBill">
-                                <div class="card">
-                                    <div class="card-body text-center">
-                                        <h3 class="card-text">Create Bill</h3>
 
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="col-md-3">
-                            <a href="../AddAnnouncement">
-                                <div class="card ">
-                                    <div class="card-body text-center">
-                                        <h3 class="card-text">Add Announcement</h3>
+                                        <th>
+                                            Appartment
+                                        </th>
 
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="col-md-3">
-                            <a href="../Invitations">
-                                <div class="card ">
-                                    <div class="card-body text-center">
-                                        <h3 class="card-text">Manage Appartments</h3>
+                                        <th class="text-right">
+                                            Invitation Code
+                                        </th>
+                                        </thead>
+                                        <tbody>
+                                            @for (int i = 0; i < Model.size; i++)
+                                            {
+                                                <tr>
+                                                    <td>
+                                                        @Model.appList[i].name
+                                                    </td>
 
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
+                                                    <td class="text-right">@Model.appList[i].objId</td>
 
-                    </div>
-                    <div class="row">
-                        <div class="col-md-1"></div>
-                        <a href="typemanager.html">
-                            <div class="col-md-3">
-                                <div class="card ">
-                                    <div class="card-body text-center">
-                                        <h3 class="card-text">Manage Type Shares</h3>
+                                                </tr>}
+                                          
 
-                                    </div>
-                                </div>
-                        </a>
-                    </div>
-                    <div class="col-md-3">
-                        <a href="#">
-                            <div class="card ">
-                                <div class="card-body text-center">
-                                    <h3 class="card-text">Add Poll</h3>
-
+                                        </tbody>
+                                    </table>
                                 </div>
                             </div>
-                        </a>
+                        </div>
                     </div>
-                    <div class="col-md-3">
-                        <a href="settlements.html">
-                            <div class="card ">
-                                <div class="card-body text-center">
-                                    <h3 class="card-text">Manage Settlements</h3>
-
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-
                 </div>
+                <!-- Table End -->
+                <!-- Lower Boxes -->
+                <!-- Lower Boxes End -->
             </div>
-        </div>
-
-        <!-- navigation -->
-    </div>
 
 
-    <!-- Reports End -->
-    <!-- Modal Complaint Start -->
-
-    <div class="modal fade complaint-modal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-lg">
-            <div class="modal-content" style="word-wrap: break-word;">
-                <form>
-                    <ul class="complaintList">
-
-                        <li><span>Name: </span><input type="text" id="complaintName"></li>
-                        <li><span>Appt#:</span><input type="text" id="complaintAppartment"></li>
-                        <span>Description:</span>
-                        <li><textarea id="complaintInput"></textarea>
-                        <li> <button type="sumbit" id="complaintButton" class="btn btn-primary btn-round">Submit Complaint</button></li>
-
-                    </ul>
-                </form>
-            </div>
-        </div>
-    </div>
-    <!-- Modal Complaint End -->
-    <!--   Core JS Files   -->
-    <script src="../Ress/assets/js/core/jquery.min.js"></script>
-    <script src="../Ress/assets/js/core/popper.min.js"></script>
-    <script src="../Ress/assets/js/core/bootstrap.min.js"></script>
-    <script src="../Ress/assets/js/plugins/perfect-scrollbar.jquery.min.js"></script>
-    <script src="../Ress/assets/js/plugins/moment.min.js"></script>
-    <!--  Plugin for Switches, full documentation here: http://www.jque.re/plugins/version3/bootstrap.switch/ -->
-    <script src="../Ress/assets/js/plugins/bootstrap-switch.js"></script>
-    <!--  Plugin for Sweet Alert -->
-    <script src="../Ress/assets/js/plugins/sweetalert2.min.js"></script>
-    <!-- Forms Validations Plugin -->
-    <script src="../Ress/assets/js/plugins/jquery.validate.min.js"></script>
-    <!--  Plugin for the Wizard, full documentation here: https://github.com/VinceG/twitter-bootstrap-wizard -->
-    <script src="../Ress/assets/js/plugins/jquery.bootstrap-wizard.js"></script>
-    <!--	Plugin for Select, full documentation here: http://silviomoreto.github.io/bootstrap-select -->
-    <script src="../Ress/assets/js/plugins/bootstrap-selectpicker.js"></script>
-    <!--  Plugin for the DateTimePicker, full documentation here: https://eonasdan.github.io/bootstrap-datetimepicker/ -->
-    <script src="../Ress/assets/js/plugins/bootstrap-datetimepicker.js"></script>
-    <!--  DataTables.net Plugin, full documentation here: https://datatables.net/    -->
-    <script src="../Ress/assets/js/plugins/jquery.dataTables.min.js"></script>
-    <!--	Plugin for Tags, full documentation here: https://github.com/bootstrap-tagsinput/bootstrap-tagsinputs  -->
-    <script src="../Ress/assets/js/plugins/bootstrap-tagsinput.js"></script>
-    <!-- Plugin for Fileupload, full documentation here: http://www.jasny.net/bootstrap/javascript/#fileinput -->
-    <script src="../Ress/assets/js/plugins/jasny-bootstrap.min.js"></script>
-    <!--  Full Calendar Plugin, full documentation here: https://github.com/fullcalendar/fullcalendar    -->
-    <script src="../Ress/assets/js/plugins/fullcalendar.min.js"></script>
-    <!-- Vector Map plugin, full documentation here: http://jvectormap.com/documentation/ -->
-    <script src="../Ress/assets/js/plugins/jquery-jvectormap.js"></script>
-    <!--  Plugin for the Bootstrap Table -->
-    <script src="../Ress/assets/js/plugins/nouislider.min.js"></script>
-    <!-- Chart JS -->
-    <script src="../Ress/assets/js/plugins/chartjs.min.js"></script>
-    <!--  Notifications Plugin    -->
-    <script src="../Ress/assets/js/plugins/bootstrap-notify.js"></script>
-    <!-- Control Center for Now Ui Dashboard: parallax effects, scripts for the example pages etc -->
-    <script src="../Ress/assets/js/paper-dashboard.min.js?v=2.0.1" type="text/javascript"></script>
-    <!-- Paper Dashboard DEMO methods, don't include it in your project! -->
-    <script src="../Ress/assets/demo/demo.js"></script>
-
+            <!-- Reports End -->
+            <!--   Core JS Files   -->
+            <script src="../Ress/assets/js/core/jquery.min.js"></script>
+            <script src="../Ress/assets/js/core/popper.min.js"></script>
+            <script src="../Ress/assets/js/core/bootstrap.min.js"></script>
+            <script src="../Ress/assets/js/plugins/perfect-scrollbar.jquery.min.js"></script>
+            <script src="../Ress/assets/js/plugins/moment.min.js"></script>
+            <!--  Plugin for Switches, full documentation here: http://www.jque.re/plugins/version3/bootstrap.switch/ -->
+            <script src="../Ress/assets/js/plugins/bootstrap-switch.js"></script>
+            <!--  Plugin for Sweet Alert -->
+            <script src="../Ress/assets/js/plugins/sweetalert2.min.js"></script>
+            <!-- Forms Validations Plugin -->
+            <script src="../Ress/assets/js/plugins/jquery.validate.min.js"></script>
+            <!--  Plugin for the Wizard, full documentation here: https://github.com/VinceG/twitter-bootstrap-wizard -->
+            <script src="../Ress/assets/js/plugins/jquery.bootstrap-wizard.js"></script>
+            <!--	Plugin for Select, full documentation here: http://silviomoreto.github.io/bootstrap-select -->
+            <script src="../Ress/assets/js/plugins/bootstrap-selectpicker.js"></script>
+            <!--  Plugin for the DateTimePicker, full documentation here: https://eonasdan.github.io/bootstrap-datetimepicker/ -->
+            <script src="../Ress/assets/js/plugins/bootstrap-datetimepicker.js"></script>
+            <!--  DataTables.net Plugin, full documentation here: https://datatables.net/    -->
+            <script src="../Ress/assets/js/plugins/jquery.dataTables.min.js"></script>
+            <!--	Plugin for Tags, full documentation here: https://github.com/bootstrap-tagsinput/bootstrap-tagsinputs  -->
+            <script src="../Ress/assets/js/plugins/bootstrap-tagsinput.js"></script>
+            <!-- Plugin for Fileupload, full documentation here: http://www.jasny.net/bootstrap/javascript/#fileinput -->
+            <script src="../Ress/assets/js/plugins/jasny-bootstrap.min.js"></script>
+            <!--  Full Calendar Plugin, full documentation here: https://github.com/fullcalendar/fullcalendar    -->
+            <script src="../Ress/assets/js/plugins/fullcalendar.min.js"></script>
+            <!-- Vector Map plugin, full documentation here: http://jvectormap.com/documentation/ -->
+            <script src="../Ress/assets/js/plugins/jquery-jvectormap.js"></script>
+            <!--  Plugin for the Bootstrap Table -->
+            <script src="../Ress/assets/js/plugins/nouislider.min.js"></script>
+            <!-- Chart JS -->
+            <script src="../Ress/assets/js/plugins/chartjs.min.js"></script>
+            <!--  Notifications Plugin    -->
+            <script src="../Ress/assets/js/plugins/bootstrap-notify.js"></script>
+            <!-- Control Center for Now Ui Dashboard: parallax effects, scripts for the example pages etc -->
+            <script src="../Ress/assets/js/paper-dashboard.min.js?v=2.0.1" type="text/javascript"></script>
+            <!-- Paper Dashboard DEMO methods, don't include it in your project! -->
+            <script src="../Ress/assets/demo/demo.js"></script>
 </body>
