@@ -1,0 +1,19 @@
+.card{
+    height:200px;
+    border-radius:0px;
+    cursor:pointer;
+    outline:none;
+}
+.card-text{
+    margin-top:65px;
+}
+a:hover{
+    text-decoration: none;
+}
+.card:hover{
+    color:rgb(255, 123, 15);
+}
+*:focus{
+    outline:0;
+    outline:none;
+}

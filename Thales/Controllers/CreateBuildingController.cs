@@ -33,6 +33,17 @@ namespace Thales.Controllers
 			String bLoc = building.location;
 			int bNumApparts = building.numApparts;
 			int bNumShares = building.totalShares;
+			float bTreasury = building.treasuryBalance;
+
+			String optionResult = Request.Form["exampleRadioz"];
+			String bCurrency;
+			if (optionResult.Equals("option1"))
+			{
+				bCurrency = "$";
+			}
+			else {
+				bCurrency = "LBP";
+			}
 
 			ParseObject buildingParse = new ParseObject("Building");
 			ParseObject appartParse = new ParseObject("Appartment");
@@ -41,6 +52,10 @@ namespace Thales.Controllers
 			buildingParse["NumApparts"] = bNumApparts;
 			buildingParse["totalShares"] = bNumShares;
 			buildingParse["Manager"] = ParseUser.CurrentUser;
+			buildingParse["Treasury"] = bTreasury;
+			buildingParse["Currency"] = bCurrency;
+			buildingParse["BillsList"] = new List<String>();
+
 
 			List<ParseObject> apparts = new List<ParseObject>();
 
@@ -60,8 +75,37 @@ namespace Thales.Controllers
 			try
 			{
 				await buildingParse.SaveAsync();
+
+				await buildingParse.FetchAsync();
+
+				//Storing building info 
+				Building mBuilding = new Building();
+				mBuilding.id = buildingParse.ObjectId;
+				mBuilding.buildingName = buildingParse.Get<string>("Name");
+				mBuilding.location = buildingParse.Get<string>("location");
+				mBuilding.treasuryBalance = buildingParse.Get<float>("Treasury");
+				mBuilding.totalShares = buildingParse.Get<int>("totalShares");
+				mBuilding.currency = buildingParse.Get<string>("Currency");
+				List<Object> tempList = buildingParse.Get<List<Object>>("BillsList");
+				String billId;
+				List<String> billsListStr = new List<string>();
+				foreach (Object obj in tempList)
+				{
+					billId = obj.ToString();
+					billsListStr.Add(billId);
+				}
+				mBuilding.billsList = billsListStr;
+				UserDashboard userDash = new UserDashboard();
+				userDash.mBuilding = mBuilding;
+
+
+				TempData["myBuilding"] = userDash.mBuilding;
+
+
+				ParseUser.CurrentUser["Building"] = buildingParse;
+				await ParseUser.CurrentUser.SaveAsync();
 				await ParseObject.SaveAllAsync(apparts);
-				return RedirectToAction("Index", "login");
+				return RedirectToAction("Index", "AdminNavigation");
 			}
 			catch (ParseException e) {
 				return new EmptyResult();

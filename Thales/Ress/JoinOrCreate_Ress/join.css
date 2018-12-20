@@ -1,4 +1,7 @@
- .join{
+body{
+    background-color:#f4f3ef;
+}
+.join{
     width: 300px;
     height: 200px;
     border: 1px solid lightgray;

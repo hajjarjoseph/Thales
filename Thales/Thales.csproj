@@ -148,6 +148,9 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\AddAnnouncementController.cs" />
+    <Compile Include="Controllers\AddBillController.cs" />
+    <Compile Include="Controllers\AdminNavigationController.cs" />
     <Compile Include="Controllers\CreateBuildingController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\JoinOrCreateController.cs" />
@@ -158,6 +161,8 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Announcement.cs" />
+    <Compile Include="Models\AnnouncementsList.cs" />
     <Compile Include="Models\Bills.cs" />
     <Compile Include="Models\BillsList.cs" />
     <Compile Include="Models\Building.cs" />
@@ -534,9 +539,15 @@
     <Content Include="Views\CreateBuilding\Index.cshtml" />
     <Content Include="Views\UsersDash\Index.cshtml" />
     <Content Include="Views\UserBills\Index.cshtml" />
+    <Content Include="Views\AdminNavigation\Index.cshtml" />
+    <Content Include="Views\AddBill\Index.cshtml" />
+    <Content Include="Views\AddAnnouncement\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Ress\AddAc_Ress\" />
+    <Folder Include="Ress\AddBill_Ress\" />
+    <Folder Include="Ress\AdminNav_Ress\" />
     <Folder Include="Ress\CreateBuilding_Ress\NewFolder1\" />
     <Folder Include="Ress\JoinOrCreate_Ress\" />
     <Folder Include="Ress\NewFolder1\" />

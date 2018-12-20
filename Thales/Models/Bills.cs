@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Parse;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -11,5 +12,7 @@ namespace Thales.Models
 		public String type { get; set; }
 		public float price { get; set; }
 		public DateTime date { get; set; }
+		public ParseFile receipt { get; set; }
+		public String imgUrl { get; set; }
 	}
 }

@@ -67,7 +67,7 @@
                 </div>
                 <ul class="nav">
                     <li>
-                        <a href="../UserDash/Index">
+                        <a href="../Users Dash/Index">
                             <p>Appartment <span id="appartNum"></span></p>
                         </a>
                     </li>
@@ -210,7 +210,7 @@
                                                     </td>
 
                                                     <td>
-                                                        @Model.billsArray[i-1].id
+                                                        <a href="@Model.billsArray[i-1].imgUrl">@Model.billsArray[i - 1].id</a>
                                                     </td>
                                                     <td>
                                                         @Model.billsArray[i-1].type
@@ -303,7 +303,7 @@
                                     <div class="col-7 col-md-8">
                                         <div class="numbers">
                                             <p class="card-category">Most Frequent Type</p>
-                                            <p class="card-title">23
+                                            <p class="card-title">@Model.mostFrequentType
                                             <p>
                                         </div>
                                     </div>

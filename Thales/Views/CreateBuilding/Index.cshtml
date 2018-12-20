@@ -33,38 +33,46 @@
 <body class=" ">
     <div class="content">
         <div class="row">
-            <div class="col-md-12">
+            <div class="col-md-3"></div>
+            <div class="col-md-6">
                 <div class="card ">
                     <div class="card-header ">
                         <h4 class="card-title">Create Building</h4>
                     </div>
-                  
-
-                        @using (Html.BeginForm("CreateBuilding", "CreateBuilding", new { ReturnUrl = ViewBag.ReturnUrl },
-    FormMethod.Post))
-                        {
-                            <div class="card-body ">
-                                <label>Building Name: </label>
-                                @Html.TextBoxFor(m => m.buildingName, new { @class = "form-control bldg" })
-                                <br>
-                                <label>Building Address: </label>
-                                @Html.TextBoxFor(m => m.location, new { @class = "form-control bldg" })<br>
-
-                                <label>Number of Appartments: </label>
-
-                                @Html.DropDownListFor(model => model.numApparts, new SelectList(new int[] { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25 }), "", new { @class = "form-control", id = "appSelect" })
-
-
-                                <label>Shares: </label>
-                                @Html.TextBoxFor(m => m.totalShares, new { @class = "form-control", id = "shareInp" })<br>
-                                <button type ="button" class="btn btn-primary" id="appButton">OK</button>
-                                <table class="table" id="appTable"></table>
+@using (Html.BeginForm("CreateBuilding", "CreateBuilding", new { ReturnUrl = ViewBag.ReturnUrl },
+                FormMethod.Post))
+{
+                    <div class="card-body ">
+                        <form method="#" action="#">
+                            <label>Building Name: </label>
+                            @Html.TextBoxFor(m => m.buildingName, new { @class = "form-control bldg" })
+                            <br>
+                            <label>Building Address: </label>
+                            @Html.TextBoxFor(m => m.location, new { @class = "form-control bldg" })<br>
+                            <label>Number of Appartments: </label>@Html.DropDownListFor(model => model.numApparts, new SelectList(new int[] { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25 }), "", new { @class = "form-control", id = "appSelect" })
+                            <label>Shares: </label>@Html.TextBoxFor(m => m.totalShares, new { @class = "form-control", id = "shareInp" })
+                            <button type="button" class="btn btn-primary" id="appButton">OK</button>
+                            <table class="table" id="appTable"></table>
+                            <label>Treasury Balance: </label>@Html.TextBoxFor(m => m.treasuryBalance, new { @class = "form-control" })
+                            <div class="form-check-radio form-check-inline">
+                                <label class="form-check-label">
+                                    <input class="form-check-input" type="radio" name="exampleRadioz" id="exampleRadios11" value="option1" checked="">
+                                    USD
+                                    <span class="form-check-sign"></span>
+                                </label>
                             </div>
-
-
+                            <div class="form-check-radio form-check-inline">
+                                <label class="form-check-label">
+                                    <input class="form-check-input" type="radio" name="exampleRadioz" id="exampleRadios12" value="option2">
+                                    LBP
+                                    <span class="form-check-sign"></span>
+                                </label>
+                            </div>
+                        
+                    </div>
                     <div class="card-footer ">
                         <button type="submit" class="btn btn-info btn-round">Submit</button>
-                        <button type="button" class="btn btn-info btn-round" id="clearButton">clear</button>
+                        <button type="clear" class="btn btn-info btn-round" id="clearButton">clear</button>
                     </div>
 }
                 </div>

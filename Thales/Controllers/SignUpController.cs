@@ -41,15 +41,17 @@ namespace Thales.Controllers
 				await user.SignUpAsync();
 				// Login was successful.
 				Debug.WriteLine("************ Sign Up succesfull *********");
+				return RedirectToAction("Index", "JoinOrCreate");
 			}
 			catch (Exception e)
 			{
 				// The login failed. Check the error to see why.
 				Debug.WriteLine("************ error SignUp *********" + e);
+				return RedirectToAction("Index", "login");
 
 
 			}
-			return RedirectToAction("Index", "login");
+			
 
 		}
 	}

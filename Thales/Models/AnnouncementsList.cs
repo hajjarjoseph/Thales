@@ -5,10 +5,9 @@ using System.Web;
 
 namespace Thales.Models
 {
-	public class BillsList
+	public class AnnouncementsList
 	{
-		public List<Bills> billsArray { get; set; }
-		public String mostFrequentType { get; set; }
+		public List<Announcement> annList { get; set; }
 		public int size { get; set; }
 	}
 }
