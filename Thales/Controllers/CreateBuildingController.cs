@@ -62,12 +62,14 @@ namespace Thales.Controllers
 			for (int i = 1; i <= bNumApparts; i++)
 			{
 				appartParse = new ParseObject("Appartment");
-				appartParse["Name"] = "Apart " + i;
+				appartParse["Name"] = "Appt " + i;
 				String appShareConfig = "appShare" + i;
 
 				double appShare = double.Parse(Request.Form[appShareConfig], System.Globalization.CultureInfo.InvariantCulture);
 				appartParse["Building"] = buildingParse;
 				appartParse["AppShare"] = appShare;
+				appartParse["owners"] = new List<String>();
+				appartParse["Settlement"] = 0;
 				apparts.Add(appartParse);
 			}
 

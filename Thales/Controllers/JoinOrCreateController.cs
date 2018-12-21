@@ -35,10 +35,12 @@ namespace Thales.Controllers
 			foreach (var userData in result) {
 
 				isEmpty = false;
-				userData.Add("owners",ParseUser.CurrentUser.ObjectId);
+				userData.AddToList("owners",ParseUser.CurrentUser.ObjectId);
 				await userData.SaveAsync();
+				ParseUser.CurrentUser["Building"] = userData.Get<ParseObject>("Building");
+				await ParseUser.CurrentUser.SaveAsync();
 
-				return RedirectToAction("Index", "Home");
+				return RedirectToAction("Index", "UsersDash");
 
 			}
 

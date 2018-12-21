@@ -1,0 +1,31 @@
+.form-control{
+    width:170px;
+}
+.form-control select{
+    height:110px;
+}
+select{
+    margin-bottom:10px;
+}
+#TypeSelect{
+    height:40px;
+}
+.table{
+    max-width : 300px;
+    overflow: hidden;
+}
+.shareInp{
+    width :70px;
+}
+#clearButton{
+    margin-left:15px;
+    overflow:hidden;
+}
+.card-footer{
+    margin-left:0px;
+    margin-right:0px;
+}
+#submitButton{
+    overflow: hidden;
+    
+}

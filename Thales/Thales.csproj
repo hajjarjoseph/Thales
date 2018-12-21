@@ -150,13 +150,17 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AddAnnouncementController.cs" />
     <Compile Include="Controllers\AddBillController.cs" />
+    <Compile Include="Controllers\AddSettlementController.cs" />
     <Compile Include="Controllers\AdminNavigationController.cs" />
     <Compile Include="Controllers\CreateBuildingController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\InvitationsController.cs" />
+    <Compile Include="Controllers\InvoiceController.cs" />
     <Compile Include="Controllers\JoinOrCreateController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Controllers\ReportsController.cs" />
     <Compile Include="Controllers\SignUpController.cs" />
+    <Compile Include="Controllers\TypeManagerController.cs" />
     <Compile Include="Controllers\UserBillsController.cs" />
     <Compile Include="Controllers\UsersDashController.cs" />
     <Compile Include="Global.asax.cs">
@@ -169,6 +173,7 @@
     <Compile Include="Models\Bills.cs" />
     <Compile Include="Models\BillsList.cs" />
     <Compile Include="Models\Building.cs" />
+    <Compile Include="Models\InvoiceModel.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Models\UserDashboard.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -376,6 +381,7 @@
     <Content Include="img\stylus.jpg" />
     <Content Include="img\US.png" />
     <Content Include="Ress\CreateBuilding_Ress\css\createbuilding.css" />
+    <Content Include="Ress\Invoice_Ress\data.txt" />
     <Content Include="Ress\Login_Ress\css\main-login.css" />
     <Content Include="Ress\Login_Ress\css\util-login.css" />
     <Content Include="Ress\Login_Ress\fonts\font-awesome-4.7.0\css\font-awesome.css" />
@@ -546,16 +552,23 @@
     <Content Include="Views\AddBill\Index.cshtml" />
     <Content Include="Views\AddAnnouncement\Index.cshtml" />
     <Content Include="Views\Invitations\Index.cshtml" />
+    <Content Include="Views\AddSettlement\Index.cshtml" />
+    <Content Include="Views\TypeManager\Index.cshtml" />
+    <Content Include="Views\Reports\Index.cshtml" />
+    <Content Include="Views\Invoice\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Ress\AddAc_Ress\" />
     <Folder Include="Ress\AddBill_Ress\" />
+    <Folder Include="Ress\AddSt_Ress\" />
     <Folder Include="Ress\AdminNav_Ress\" />
     <Folder Include="Ress\CreateBuilding_Ress\NewFolder1\" />
     <Folder Include="Ress\Inv_Ress\" />
     <Folder Include="Ress\JoinOrCreate_Ress\" />
     <Folder Include="Ress\NewFolder1\" />
+    <Folder Include="Ress\Report_Ress\" />
+    <Folder Include="Ress\TypeMg_Ress\" />
     <Folder Include="Ress\userBills_Ress\" />
     <Folder Include="Ress\UserDash_Ress\" />
     <Folder Include="Views\NewFolder1\" />

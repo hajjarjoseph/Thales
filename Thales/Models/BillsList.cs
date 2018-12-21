@@ -9,6 +9,7 @@ namespace Thales.Models
 	{
 		public List<Bills> billsArray { get; set; }
 		public String mostFrequentType { get; set; }
+		public float mostExpensiveBill { get; set; }
 		public int size { get; set; }
 	}
 }

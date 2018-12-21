@@ -9,5 +9,6 @@ namespace Thales.Models
 	{
 		public String objId { get; set; }
 		public String name { get; set; }
+		public float settlement { get; set; }
 	}
 }

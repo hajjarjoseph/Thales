@@ -76,7 +76,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="reports.html">
+                        <a href="../Reports/index">
                             <p>
                                 Reports
                             </p>
@@ -185,7 +185,7 @@
                                     <div class="col-7 col-md-8">
                                         <div class="numbers">
                                             <p class="card-category">Most Expensive Bill</p>
-                                            <p class="card-title">$ 2000
+                                            <p class="card-title">@Model.mBillsList.mostExpensiveBill @Model.mBuilding.currency
                                             <p>
                                         </div>
                                     </div>
@@ -238,7 +238,7 @@
                                     <div class="col-7 col-md-8">
                                         <div class="numbers">
                                             <p class="card-category">Settlement</p>
-                                            <p class="card-title">23
+                                            <p class="card-title">@Model.mApprt.settlement @Model.mBuilding.currency
                                             <p>
                                         </div>
                                     </div>
@@ -247,7 +247,7 @@
                             <div class="card-footer ">
                                 <hr>
                                 <div class="stats">
-                                    <i class="fa fa-clock-o"></i> Due in 24 Days
+                                    <i class="fa fa-clock-o"></i> Due in 11 Days
                                 </div>
                             </div>
                         </div>
@@ -272,30 +272,19 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <td class="text-center">1</td>
-                                        <td>Andrew Mike</td>
-                                        <td>Develop</td>
-                                        <td>2013</td>
-                                        <td class="text-right">&euro; 99,225</td>
+                                    @for (int x = 1; x <= Model.mBillsList.size; x++)
+                                    {
+                                        <tr>
+                                            <td class="text-center">@x</td>
+                                            <td><a href="@Model.mBillsList.billsArray[x-1].imgUrl">@Model.mBillsList.billsArray[x - 1].id</a></td>
+                                            <td>@Model.mBillsList.billsArray[x-1].type</td>
+                                            <td>@Model.mBillsList.billsArray[x-1].date.ToShortDateString()</td>
+                                            <td class="text-right">@Model.mBillsList.billsArray[x-1].price @Model.mBuilding.currency</td>
 
-                                    </tr>
-                                    <tr>
-                                        <td class="text-center">2</td>
-                                        <td>John Doe</td>
-                                        <td>Design</td>
-                                        <td>2012</td>
-                                        <td class="text-right">&euro; 89,241</td>
-
-                                    </tr>
-                                    <tr>
-                                        <td class="text-center">3</td>
-                                        <td>Alex Mike</td>
-                                        <td>Design</td>
-                                        <td>2010</td>
-                                        <td class="text-right">&euro; 92,144</td>
-
-                                    </tr>
+                                        </tr>
+                                    }
+                                   
+                                 
                                 </tbody>
                             </table>
                         </div>
@@ -310,26 +299,14 @@
                                 <div class="table-full-width table-responsive">
                                     <table class="table" style="overflow: hidden;">
                                         <tbody>
-                                            <tr>
-                                                <td class="text-left">Sign contract for "What are conference organizers afraid of?"</td>
-                                            </tr>
-                                            <tr>
-
-                                                <td class="text-left">Lines From Great Russian Literature? Or E-mails From My Boss?</td>
-
-                                            </tr>
-                                            <tr>
-
-                                                <td class="text-left">
-                                                    Using dummy content or fake information in the Web design process can result in products with unrealistic
-                                                </td>
-
-                                            </tr>
-                                            <tr>
-
-                                                <td class="text-left">But I must explain to you how all this mistaken idea of denouncing pleasure</td>
-
-                                            </tr>
+                                            @for(int i=0; i<Model.mAnnList.size; i++)
+                                            {
+                                                <tr>
+                                                    <td class="text-left">@Model.mAnnList.annList[i].message</td>
+                                                </tr>
+                                            }
+                                            
+                                         
                                         </tbody>
                                     </table>
                                 </div>

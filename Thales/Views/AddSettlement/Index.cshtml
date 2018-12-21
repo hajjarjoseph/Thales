@@ -1,4 +1,4 @@
-﻿@model Thales.Models.BillsList
+﻿@model Thales.Models.AppartmentsList
 @{
     Layout = null;
 }
@@ -26,12 +26,26 @@
     <link href="../Ress/assets/css/bootstrap.min.css" rel="stylesheet" />
     <link href="../Ress/assets/css/paper-dashboard.css?v=2.0.1" rel="stylesheet" />
     <!--CSS and JS for Page -->
-    <link href="../Ress/userBills_Ress/bills.css" rel="stylesheet" />
-    <script src="../Ress/userBills_Ress/bills.js"></script>
+    <!-- <link href="css/settlements.css" rel="stylesheet" /> -->
     <!-- CSS and JS for Graphs -->
-    <link rel="stylesheet" href="../Ress/charts-components/dist/chartist.min.css">
-    <script src="../Ress/charts-components/dist/chartist.min.js"></script>
+    <link rel="stylesheet" href="../charts-components/dist/chartist.min.css">
+    <script src="../charts-components/dist/chartist.min.js"></script>
 </head>
+<style>
+    .table {
+        border-bottom: 0.4px solid lightgrey;
+    }
+
+    .form-control {
+        display: inline-block;
+        max-width: 100px;
+        margin-left: 10px;
+    }
+
+    td {
+        font-size: 20px;
+    }
+</style>
 <body class=" ">
     <div class="wrapper ">
         <div class="sidebar" data-color="brown" data-active-color="danger">
@@ -67,31 +81,24 @@
                 </div>
                 <ul class="nav">
                     <li>
-                        <a href="../UsersDash/Index">
+                        <a href="home.html">
                             <p>Appartment <span id="appartNum"></span></p>
                         </a>
                     </li>
-                    <li class="active">
-                        <a href="#">
+                    <li>
+                        <a href="bills.html">
                             <p>
                                 Bills
                             </p>
                         </a>
                     </li>
                     <li>
-                        <a href="../Reports/Index">
+                        <a href="reports.html">
                             <p>
                                 Reports
                             </p>
                         </a>
                     </li>
-                    <li>
-                        <a data-toggle="modal" href="#" data-target=".complaint-modal">
-
-                            <p id="Complaints">
-                                Complaints
-                            </p>
-                        </a>
                 </ul>
             </div>
         </div>
@@ -134,7 +141,7 @@
                         </form>
                         <ul class="navbar-nav">
                             <li class="nav-item">
-                                <a class="nav-link btn-magnify" href="#pablo">
+                                <a class="nav-link btn-magnify" href="navigation.html">
                                     <i class="nc-icon nc-layout-11"></i>
                                     <p>
                                         <span class="d-lg-none d-md-block">Stats</span>
@@ -174,176 +181,58 @@
 
 
             <div class="content">
-                <!-- Table -->
                 <div class="row">
-                    <div class="col-md-12">
+                    <div class="col-md-6 ml-auto mr-auto">
                         <div class="card">
-                            <div class="card-header">
-                                <h4 class="card-title"> Bills</h4>
-                            </div>
                             <div class="card-body">
-                                <div class="table-responsive">
-                                    <table class="table table-striped" id="billTableBody">
-                                        <thead class="text-primary">
-                                        <th class="text-center">
-                                            #
-                                        </th>
+                                <div id="accordion" role="tablist" aria-multiselectable="true" class="card-collapse">
+                                    <h4 class="card-title">Manage Appartment Settlements</h4>
+                                    <!-- starts here -->
+                                    @for (int i = 0; i < Model.size ; i++)
+                                    {
+                                    <div class="card card-plain">
+                                            <!-- id="headingOne" change-->
+                                            <div class="card-header" role="tab" id="@string.Format("heading{0}",i)">
+                                                <!-- #collapseOne aria-controls="collapseOne" change-->
+                                                <a data-toggle="collapse" data-parent="#accordion" href="@string.Format("#collapse{0}",i)" aria-expanded="true" aria-controls="@string.Format("collapse{0}",i)">
+                                                    @Model.appList[i].name :
+                                                    <i class="nc-icon nc-minimal-down"></i>
+                                                </a>
+                                            </div>
+                                            <div id="@string.Format("collapse{0}",i)" class="collapse" role="tabpanel" aria-labelledby="@string.Format("heading{0}",i)">
+                                                <div class="card-body docDown">
+                                                    <form method="post" action="/AddSettlement/Add">
+                                                        <table class="table">
 
-                                        <th>
-                                            Invoice(pic of reciept)
-                                        </th>
-                                        <th>
-                                            Type
-                                        </th>
-                                        <th class="text-center">
-                                            Date
-                                        </th>
-                                        <th class="text-right">
-                                            Price
-                                        </th>
-                                        </thead>
-                                        <tbody>
-                                            @for (int i = 1; i <= Model.size; i++) {
-                                                <tr>
-                                                    <td class="text-center">
-                                                        @i
-                                                    </td>
+                                                            <tr>
+                                                                <td><input class="form-control" name="iden" id="iden" value="@i" type="hidden"></td>
+                                                                <td>+ <input class="form-control" name="addAmount" id="addAmount" type="text" value="0"></td>
+                                                                <td>- <input class="form-control" name="negAmount" id="negAmount" type="text" value="0"></td>
+                                                                <td><label>Owes: @Model.appList[i].settlement</label></td>
+                                                                <td><button type="submit" class="btn btn-danger">Submit</button></td>
+                                                            </tr>
 
-                                                    <td>
-                                                        <a href="@Model.billsArray[i-1].imgUrl">@Model.billsArray[i - 1].id</a>
-                                                    </td>
-                                                    <td>
-                                                        @Model.billsArray[i-1].type
-                                                    </td>
-                                                    <td class="text-center">
-                                                        @Model.billsArray[i - 1].date.ToShortDateString()
-                                                    </td>
-                                                    <td class="text-right">$ @Model.billsArray[i-1].price</td>
-                                                </tr>
-                                            }
-                                            <tr>
-                                                <td colspan="3"></td>
-                                                <td class="td-total">Total</td>
-                                                <td class="td-price" id="billTotal">$ 0</td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- Table End -->
-                <!-- Lower Boxes -->
-                <div class="row">
-                    <div class="col-lg-4 col-md-6 col-sm-6">
-                        <div class="card card-stats">
-                            <div class="card-body ">
-                                <div class="row">
-                                    <div class="col-5 col-md-4">
-                                        <div class="icon-big text-center icon-warning">
-                                            <i class="nc-icon nc-money-coins text-success"></i>
-                                        </div>
-                                    </div>
-                                    <div class="col-7 col-md-8">
-                                        <div class="numbers">
-                                            <p class="card-category">Most Expensive Bill</p>
-                                            <p class="card-title" id="mostExpensive">
-                                                $ 0
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="card-footer ">
-                                <hr>
-                                <div class="stats">
-                                    <i class="fa fa-calendar-o"></i> Date of Bill
-                                </div>
-                            </div>
-                        </div>
 
-                    </div>
-                    <div class="col-lg-4 col-md-6 col-sm-6">
-                        <div class="card card-stats">
-                            <div class="card-body ">
-                                <div class="row">
-                                    <div class="col-5 col-md-4">
-                                        <div class="icon-big text-center icon-warning">
-                                            <i class="nc-icon nc-money-coins text-success"></i>
-                                        </div>
-                                    </div>
-                                    <div class="col-7 col-md-8">
-                                        <div class="numbers">
-                                            <p class="card-category">Number Of Bills</p>
-                                            <p class="card-title" id="numberofBills">
-                                                0
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="card-footer ">
-                                <hr>
-                                <div class="stats">
-                                    <i class="fa fa-calendar-o"></i> Date since last bill
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6 col-sm-6">
-                        <div class="card card-stats">
-                            <div class="card-body ">
-                                <div class="row">
-                                    <div class="col-5 col-md-4">
-                                        <div class="icon-big text-center icon-warning">
-                                            <i class="nc-icon nc-vector text-danger"></i>
-                                        </div>
-                                    </div>
-                                    <div class="col-7 col-md-8">
-                                        <div class="numbers">
-                                            <p class="card-category">Most Frequent Type</p>
-                                            <p class="card-title">@Model.mostFrequentType
-                                            <p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="card-footer ">
-                                <hr>
-                                <div class="stats">
-                                    <i class="fa fa-clock-o"></i> 2nd Most Frequent
-                                </div>
+                                                        </table>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                     
+                                            
+                                            </div>
+                                     }
+                                        
+                                        
+                                    
+                                <!-- ends ^ -->
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <!-- Lower Boxes End -->
         </div>
-
 
         <!-- Reports End -->
-        <!-- Modal Complaint Start -->
-
-        <div class="modal fade complaint-modal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-lg">
-                <div class="modal-content" style="word-wrap: break-word;">
-                    <form>
-                        <ul class="complaintList">
-
-                            <li><span>Name: </span><input type="text" id="complaintName"></li>
-                            <li><span>Appt#:</span><input type="text" id="complaintAppartment"></li>
-                            <span>Description:</span>
-                            <li><textarea id="complaintInput"></textarea>
-                            <li> <button type="sumbit" id="complaintButton" class="btn btn-primary btn-round">Submit Complaint</button></li>
-
-                        </ul>
-                    </form>
-                </div>
-            </div>
-        </div>
-        <!-- Modal Complaint End -->
         <!--   Core JS Files   -->
         <script src="../Ress/assets/js/core/jquery.min.js"></script>
         <script src="../Ress/assets/js/core/popper.min.js"></script>

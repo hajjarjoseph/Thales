@@ -5,7 +5,6 @@
 
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta charset="utf-8" />
@@ -15,7 +14,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <title>
         Thales
-
     </title>
     <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
     <!--     Fonts and icons     -->
@@ -28,21 +26,17 @@
     <link href="../Ress/assets/css/bootstrap.min.css" rel="stylesheet" />
     <link href="../Ress/assets/css/paper-dashboard.css?v=2.0.1" rel="stylesheet" />
     <!--CSS and JS for Page -->
-    <link href="../Ress/AdminNav_Ress/navigation.css" rel="stylesheet" />
-
-
+    <link href="c../Ress/TypeMg_Ress/typemanager.css" rel="stylesheet" />
+    <script src="../Ress/TypeMg_Ress/typemanage.js"></script>
     <!-- CSS and JS for Graphs -->
-    <link rel="stylesheet" href="../Ress/charts-components/dist/chartist.min.css">
-    <script src="../Ress/charts-components/dist/chartist.min.js"></script>
-
+    <link rel="stylesheet" href="../charts-components/dist/chartist.min.css">
+    <script src="../charts-components/dist/chartist.min.js"></script>
 </head>
 <body class=" ">
     <div class="wrapper ">
         <div class="sidebar" data-color="brown" data-active-color="danger">
             <!--
-
                 Tip 1: You can change the color of the sidebar using: data-color="blue | green | orange | red | yellow"
-
             -->
             <div class="logo">
                 <a href="home.html" class="simple-text logo-mini">
@@ -52,11 +46,8 @@
                 </a>
                 <a href="home.html" class="simple-text logo-normal">
                     Thales
-
                     <!-- <div class="logo-image-big">
-
                       <img src="../Ress/assets/img/logo-big.png">
-
                     </div> -->
                 </a>
             </div>
@@ -69,7 +60,6 @@
                         <a data-toggle="collapse" href="#collapseExample" class="collapsed">
                             <span>
                                 Get User Name
-
                             </span>
                         </a>
                         <div class="clearfix"></div>
@@ -85,7 +75,6 @@
                         <a href="bills.html">
                             <p>
                                 Bills
-
                             </p>
                         </a>
                     </li>
@@ -93,11 +82,9 @@
                         <a href="reports.html">
                             <p>
                                 Reports
-
                             </p>
                         </a>
                     </li>
-
 
                 </ul>
             </div>
@@ -174,107 +161,47 @@
                 </div>
             </nav>
             <!-- End Navbar -->
+            <!-- Table + Select Dropdown -->
             <div class="content">
-                <h5>Navigation</h5>
-                <div class="places-sweet-alerts">
-                    <div class="row">
-                        <div class="col-md-2"></div>
-
-                        <div class="col-md-3">
-                            <a href="../AddBill">
-                                <div class="card">
-                                    <div class="card-body text-center">
-                                        <h3 class="card-text">Create Bill</h3>
-
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="col-md-3">
-                            <a href="../AddAnnouncement">
-                                <div class="card ">
-                                    <div class="card-body text-center">
-                                        <h3 class="card-text">Add Announcement</h3>
-
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="col-md-3">
-                            <a href="../Invitations">
-                                <div class="card ">
-                                    <div class="card-body text-center">
-                                        <h3 class="card-text">Manage Appartments</h3>
-
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-
-                    </div>
-                    <div class="row">
-                        <div class="col-md-1"></div>
-                        <a href="../TypeManager/Index">
-                            <div class="col-md-3">
-                                <div class="card ">
-                                    <div class="card-body text-center">
-                                        <h3 class="card-text">Manage Type Shares</h3>
-
-                                    </div>
-                                </div>
-                        </a>
-                    </div>
-                    <div class="col-md-3">
-                        <a href="#">
-                            <div class="card ">
-                                <div class="card-body text-center">
-                                    <h3 class="card-text">Add Poll</h3>
-
-                                </div>
+                <div class="row">
+                    <div class="col-md-2"></div>
+                    <div class="col-md-8">
+                        <div class="card ">
+                            <div class="card-header ">
+                                <h4 class="card-title">Manage Shares Of Bill Types</h4>
                             </div>
-                        </a>
-                    </div>
-                    <div class="col-md-3">
-                        <a href="../AddSettlement">
-                            <div class="card ">
-                                <div class="card-body text-center">
-                                    <h3 class="card-text">Manage Settlements</h3>
+                            <div class="card-body ">
+                                <form method="#" action="#">
+                                    <label>Bill type</label>
+                                    <div class="form-group selecDiv">
+                                        <select id="TypeSelect" class="form-control select" autocomplete="off">
+                                            <option value="0">--Select Type--</option>
+                                            <option value="1">Concierge</option>
+                                            <option value="2">Decoration</option>
+                                            <option value="3">Electricity</option>
+                                            <option value="4">Elevator</option>
+                                            <option value="5">Maintenance</option>
+                                            <option value="6">Water</option>
+                                        </select>
 
-                                </div>
+                                </form>
+                                <table id="shareManage" class="table"></table>
                             </div>
-                        </a>
+                            <div class="card-footer ">
+                                <form action="../AdminNavigation">
+                                    <button type="submit" onclick="" class="btn btn-danger " id="submitButton">Submit</button>
+                                    <button type="clear" class="btn btn-danger " id="clearButton">clear</button>
+                                </form>
+                               
+                                
+                            </div>
+                        </div>
                     </div>
-
                 </div>
             </div>
-        </div>
 
-        <!-- navigation -->
-    </div>
-
-
-    <!-- Reports End -->
-    <!-- Modal Complaint Start -->
-
-    <div class="modal fade complaint-modal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-lg">
-            <div class="modal-content" style="word-wrap: break-word;">
-                <form>
-                    <ul class="complaintList">
-
-                        <li><span>Name: </span><input type="text" id="complaintName"></li>
-                        <li><span>Appt#:</span><input type="text" id="complaintAppartment"></li>
-                        <span>Description:</span>
-                        <li><textarea id="complaintInput"></textarea>
-                        <li> <button type="sumbit" id="complaintButton" class="btn btn-primary btn-round">Submit Complaint</button></li>
-
-                    </ul>
-                </form>
-            </div>
         </div>
     </div>
-    <!-- Modal Complaint End -->
-    <!--   Core JS Files   -->
     <script src="../Ress/assets/js/core/jquery.min.js"></script>
     <script src="../Ress/assets/js/core/popper.min.js"></script>
     <script src="../Ress/assets/js/core/bootstrap.min.js"></script>
@@ -312,5 +239,5 @@
     <script src="../Ress/assets/js/paper-dashboard.min.js?v=2.0.1" type="text/javascript"></script>
     <!-- Paper Dashboard DEMO methods, don't include it in your project! -->
     <script src="../Ress/assets/demo/demo.js"></script>
-
 </body>
+</html>

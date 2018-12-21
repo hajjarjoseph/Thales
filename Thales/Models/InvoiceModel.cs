@@ -5,12 +5,12 @@ using System.Web;
 
 namespace Thales.Models
 {
-	public class UserDashboard
+	
+	public class InvoiceModel
 	{
 		public Building mBuilding { get; set; }
-		public AnnouncementsList mAnnList { get; set;}
 		public BillsList mBillsList { get; set; }
-		public User mUser { get; set; }
-		public Appartment mApprt { get; set; }
+		public Appartment myApprt { get; set; }
+		public User myUser { get; set; }
 	}
 }
